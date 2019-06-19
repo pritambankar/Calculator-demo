@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calculator</title>
+  <link href="../../assets/bootstrap.css" rel="stylesheet">
+  
+</head>
+<body class="ng-cloak">
+  <div class="container">
+   
+        <h3>Simple Calculator</h3>
+
+        <form (ngSubmit)="doAddition()" [formGroup]="calculateForm"  class="form-inline">
+          
+          <input formControlName="inputbox1" type="text" id="input1" class="input-small">  
+          <select formControlName="operation" class="span1 ml-1">
+            <option selected value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+          </select>
+          <input formControlName="inputbox2" type="text" id="input2" class="input-small ml-1">           
+          <button   type="submit" class="btn btn-outline-dark ml-2">Go</button>         
+        </form>
+        <h2>{{answer}}</h2>
+
+    
+    <br>
+    
+
+    <h4>History</h4>
+    <table class="table">
+        <thead><tr>
+          <th>Time</th>
+          <th>Expression</th>
+          <th>Result</th>
+        </tr></thead>
+        <tr *ngFor="let result of results">
+          <td>
+            {{result.timestamp | date:'mediumTime'}}
+          </td>
+          <td>
+            <span>{{result.expr}}</span>
+          </td>
+          <td>{{result.result}}</td>
+        </tr>
+      </table>
+  </div>
+</body>
+</html>
